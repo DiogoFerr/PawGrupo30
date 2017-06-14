@@ -10,7 +10,6 @@ session_start();
 
 require_once (realpath(dirname(__FILE__)) . '/Config.php');
 require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
-
 ?>
 
 <html>
@@ -22,7 +21,7 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
         <?php
         if (isset($_SESSION['username']) === false) {
             ?>
-        <form action="validarLogin.php" method="post">
+            <form action="validarLogin.php" method="post">
                 <label>Username:<input type="text" name="username" required></label>
                 <label>Password:<input type="password" name="password" required></label>
                 <input type="submit" name="loginbutton" value="Login">
@@ -39,12 +38,19 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
             <?php
         }
         ?>
-        
-        <?php
 
-                $manager = new DocumentoManager();
-                $lista = $manager->getUsers();
-               foreach ($lista as $value) {}?>
+        <?php
+        $manager = new DocumentoManager();
+        $lista = $manager->getDocuments();
+        foreach ($lista as $value) {
+            ?>
+            <fieldset>
+                <h2><?php echo $value->getTitulo() ?> </h2>
+                <p><?php echo $value->getResumo() ?></p>
+                <p><?php echo $value->getAutor() ?></p>
+                <a href="detalhesDocumento.php?cod=<?php echo $value->getId() ?>">Mais...</a>
+            </fieldset>
+        <?php } ?>
     </body>
 </html>
 

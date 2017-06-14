@@ -5,7 +5,7 @@ require_once __DIR__ . '/Config.php';
 require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
 $errors = array();
 $inputType = INPUT_POST;
-    
+
 if (filter_has_var($inputType, 'upload')) {
 
     if (filter_has_var($inputType, 'autor')) {
@@ -50,21 +50,23 @@ if (filter_has_var($inputType, 'upload')) {
     } else {
         $errors['resumo'] = 'Ocorreu um erro com o resumo';
     }
-    if (filter_has_var($inputType, 'data')) {
-        $data = filter_input($inputType, 'data',     FILTER_SANITIZE_SPECIAL_CHARS);
-        if((time()-(60*60*24)) < strtotime($data)){
-            $erros['data'] = 'A data é invalida';
-        }
-    }else{
-        $errors['data']='Data inexistente';
+    
+    
+    if (filter_input($inputType, 'tipo') == '1') {
+        $estado = 1;
+    } else if (filter_input($inputType, 'tipo') == '2') {
+        $estado = 2;
+    } else {
+        $estado = 3;
     }
-
+    
     if ($_FILES['ficheiro']['size'] > 0) {
         $fileName = $_FILES['ficheiro']['name'];
         $tmpName = $_FILES['ficheiro']['tmp_name'];
         $fileSize = $_FILES['ficheiro']['size'];
         $fileType = $_FILES['ficheiro']['type'];
-
+        $filedate = date('m/d/Y h:i:s', time());
+    
         $fp = fopen($tmpName, 'r');
         $content = fread($fp, filesize($tmpName));
         $content = addslashes($content);
@@ -80,7 +82,7 @@ if (filter_has_var($inputType, 'upload')) {
     } else {
         $documentomanager = new DocumentoManager();
 
-        $documentomanager->registarDocumento($fileName, $fileType, $titulo, $autor, $resumo, $categoria, $data, $content, $palavras, $fileSize);
+        $documentomanager->registarDocumento(null,$fileName, $fileType, $titulo, $autor, $resumo, $categoria, $filedate, $content, $palavras, $fileSize,$estado);
     }
 }
 ?>

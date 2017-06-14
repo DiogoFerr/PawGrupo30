@@ -22,13 +22,11 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
             <textarea name="resumo" id="resumo"></textarea>
             <label for="palavras">Palavras Chave:</label>
             <input type="text" name="palavras" id="palavras" required="true">
-            <label for ="data">Data de Criação: </label>
-            <input type="date" id="data" name="data">
             <label>Tipo:</label>
-            <input type="radio" name="tipo" checked="true" value="privado"> Privado<br>
-            <input type="radio" name="tipo" value="publico"> Publico<br>
-            <input type="radio" id="partilhar" name="tipo" value="partilhar"> Partilhar
-            <table  hidden="true" id="partilhar" style="width:20%">
+            <input type="radio" name="tipo" checked="true" value="1"> Privado<br>
+            <input type="radio" name="tipo" value="2"> Publico<br>
+            <input type="radio" id="partilhar" name="tipo" value="3"> Partilhar
+            <table   id="partilhar" style="width:20%">
                 <tr>
                     <th>Nome do Utilizador</th>
                     <th>Partilhar?</th> 

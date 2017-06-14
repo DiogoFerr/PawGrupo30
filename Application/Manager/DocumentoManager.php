@@ -5,14 +5,14 @@ require_once Config::getApplicationDatabasePath() . 'MyDataAccessPDO.php';
 require_once Config::getApplicationModelPath() . 'Documento.php';
 class DocumentoManager extends MyDataAccessPDO {
     
-    const SQL_TABLE_USER = 'documento';
+    const SQL_TABLE_NAME = 'documento';
     
-     public function registarDocumento($nome,$tipo, $titulo, $autor,$resumo ,$categoria,$data,$conteudo,$palavras,$tamanho){
+     public function registarDocumento($id,$nome,$tipo, $titulo, $autor,$resumo ,$categoria,$data,$conteudo,$palavras,$tamanho,$estado){
          
-         $documento = new Documento($nome,$tipo, $titulo, $autor,$resumo ,$categoria,$data,$conteudo,$palavras,$tamanho);
+         $documento = new Documento($id,$nome,$tipo, $titulo, $autor,$resumo ,$categoria,$data,$conteudo,$palavras,$tamanho,$estado);
 
          try {
-            $this->insert(static::SQL_TABLE_USER, $documento->convertObjectToArray());
+            $this->insert(static::SQL_TABLE_NAME, $documento->convertObjectToArray());
         } catch (Exception $ex) {
             
         }
@@ -28,7 +28,7 @@ class DocumentoManager extends MyDataAccessPDO {
                 $listaDoc[$i] = Documento::convertArrayToObject($value);
                 $i++;
             }
-            return $listaUsers;
+            return $listaDoc;
         } catch (Exception $e) {
             throw $e;
         }
