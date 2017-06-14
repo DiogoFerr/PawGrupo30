@@ -19,7 +19,6 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
         <title></title>
     </head>
     <body>
-        <h2>ja da oh boi!</h2>
         <?php
         if (isset($_SESSION['username']) === false) {
             ?>
