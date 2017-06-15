@@ -11,8 +11,8 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
         <script src="<?= Config::getApplicationJSPath() . 'CriarDocumento.js' ?>" ></script>
     </head>
     <body>
-        <form method="post" enctype="multipart/form-data"
-              <label for="titulo">Titulo: </label>
+        <form method="post" enctype="multipart/form-data">
+            <label for="titulo">Titulo: </label>
             <input type="text" name="titulo" id="titulo" required="true">
             <label for="autor">Autor: </label>
             <input type="text" name="autor" id="autor" required="true">
@@ -32,22 +32,21 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
                     <th>Partilhar?</th> 
                 </tr>
                 <?php
-
                 $manager = new userManager();
                 $lista = $manager->getUsers();
-               foreach ($lista as $value) {
+                foreach ($lista as $value) {
                     ?>
                     <tr>
                         <td><?php echo $value->getUsername() ?> </td>
                         <td><input id="<?php echo $value->getId() ?>" name="username" type="checkbox"></td>
                     </tr>
-                <?php 
-               }
+                    <?php
+                }
                 ?>
             </table>
-                <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
-                <input name="ficheiro" type="file" id="ficheiro">
-                <input name="upload" type="submit" id="upload" value="upload">
-                </form>
-                </body>
-                </html>
+            <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
+            <input name="ficheiro" type="file" id="ficheiro">
+            <input name="upload" type="submit" id="upload" value="upload">
+        </form>
+    </body>
+</html>

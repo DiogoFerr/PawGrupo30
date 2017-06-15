@@ -50,8 +50,8 @@ if (filter_has_var($inputType, 'upload')) {
     } else {
         $errors['resumo'] = 'Ocorreu um erro com o resumo';
     }
-    
-    
+
+
     if (filter_input($inputType, 'tipo') == '1') {
         $estado = 1;
     } else if (filter_input($inputType, 'tipo') == '2') {
@@ -59,14 +59,14 @@ if (filter_has_var($inputType, 'upload')) {
     } else {
         $estado = 3;
     }
-    
+
     if ($_FILES['ficheiro']['size'] > 0) {
         $fileName = $_FILES['ficheiro']['name'];
         $tmpName = $_FILES['ficheiro']['tmp_name'];
         $fileSize = $_FILES['ficheiro']['size'];
         $fileType = $_FILES['ficheiro']['type'];
-        $filedate = date('m/d/Y h:i:s', time());
-    
+        $filedate = date('y-m-d h:i:s', time());
+
         $fp = fopen($tmpName, 'r');
         $content = fread($fp, filesize($tmpName));
         $content = addslashes($content);
@@ -82,7 +82,7 @@ if (filter_has_var($inputType, 'upload')) {
     } else {
         $documentomanager = new DocumentoManager();
 
-        $documentomanager->registarDocumento(null,$fileName, $fileType, $titulo, $autor, $resumo, $categoria, $filedate, $content, $palavras, $fileSize,$estado);
+        $documentomanager->registarDocumento(null, $fileName, $fileType, $titulo, $autor, $resumo, $categoria, $filedate, $content, $palavras, $fileSize, $estado);
+        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
     }
 }
-?>
