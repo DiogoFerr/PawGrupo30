@@ -37,6 +37,7 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
                 ?>
                 <div>
                     <h2>Voce é o mudafking boss</h2>
+                    <a href="areaAdmin.php"><button type="button">AreaAdmin</button></a>
                     <a href="logout.php"><button type="button">Loggout</button></a>
                 </div>
                 <?php
@@ -65,6 +66,17 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
                 <?php
                 $docs = new DocumentoManager();
                 $list = $docs->ShowAll();
+            }
+        }
+
+        if (isset($_SESSION['username']) === true) {
+            if (($_SESSION['estadoServer']) === 'banido') {
+                ?>
+                <div>
+                    <h2>Foste mandado com o caralho por ma utilização do site</h2>
+                    <a href="logout.php"><button type="button">Retroceder</button></a>
+                </div>
+                <?php
             }
         }
         ?>

@@ -12,13 +12,7 @@ class userManager extends MyDataAccessPDO {
     public function getUsers() {
         try {
             $lista = $this->getRecords(self::SQL_TABLE_NAME);
-            $listaUsers = array();
-            $i = 0;
-            foreach ($lista as $value) {
-                $listaUsers[$i] = Utilizador::convertArrayToObject($value);
-                $i++;
-            }
-            return $listaUsers;
+            return $lista;
         } catch (Exception $e) {
             throw $e;
         }
