@@ -51,7 +51,14 @@ class userManager extends MyDataAccessPDO {
 
     public function gettingUserServerState($state) {
         try {
-            return $this->getRecords(self::SQL_TABLE_NAME, Array('estadoServer' => $state));
+            $lista->getRecords(self::SQL_TABLE_NAME, Array('estadoServer' => $state));
+            $listaUsers = array();
+            $i = 0;
+            foreach ($lista as $value) {
+                $listaUsers[$i] = Utilizador::convertArrayToObject($value);
+                $i++;
+            }
+            return $listaUsers;
         } catch (Exception $e) {
             throw $e;
         }
