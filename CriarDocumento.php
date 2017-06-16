@@ -35,7 +35,7 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
                 $manager = new userManager();
                 $lista = $manager->getUsers();
                 foreach ($lista as $value) {
-                    if($value->getTipo() === '2') {
+                    if ($value->getTipo() === '2') {
                         ?>
                         <tr>
                             <td><?php echo $value->getUsername() ?> </td>

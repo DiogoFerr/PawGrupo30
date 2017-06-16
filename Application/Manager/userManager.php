@@ -35,7 +35,8 @@ class userManager extends MyDataAccessPDO {
 
     public function getUserByName($utilizador) {
         try {
-            return $this->getRecords(self::SQL_TABLE_NAME, Array('username' => $utilizador));
+            $result = $this->getRecords(self::SQL_TABLE_NAME, Array('username' => $utilizador));
+            return $result;
         } catch (Exception $e) {
             throw $e;
         }
@@ -49,18 +50,16 @@ class userManager extends MyDataAccessPDO {
         }
     }
 
-    public function gettingUserServerState($state) {
+    public function gettingUserServerState($username) {
         try {
-            $lista->getRecords(self::SQL_TABLE_NAME, Array('estadoServer' => $state));
-            $listaUsers = array();
-            $i = 0;
-            foreach ($lista as $value) {
-                $listaUsers[$i] = Utilizador::convertArrayToObject($value);
-                $i++;
+            $lista = $this->getRecords(static::SQL_TABLE_NAME, Array('username' => $username));
+            if (empty($lista)) {
+                return;
             }
-            return $listaUsers;
+            $user = Utilizador::convertObjectToArray($lista[0]);
+            return $user;
         } catch (Exception $e) {
-            throw $e;
+            return;
         }
     }
 

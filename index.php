@@ -28,20 +28,34 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
                 <a href="Registo.php"><button type="button">Registar</button></a>
             </form>
             <?php
+            $docs = new DocumentoManager();
+            $list = $docs->ShowAll();
         }
 
         if (isset($_SESSION['username']) === true) {
-            if (isset($_SESSION['estadoServer']) === '1') {
+            if (($_SESSION['estadoServer']) === 'admin') {
                 ?>
-                <h2>A sua conta ainda nao foi validada pelos Admins</h2>
-                <a href="index.php"><button type="button">Retroceder</button></a>
+                <div>
+                    <h2>Voce é o mudafking boss</h2>
+                    <a href="logout.php"><button type="button">Loggout</button></a>
+                </div>
                 <?php
             }
         }
 
+        if (isset($_SESSION['username']) === true) {
+            if (($_SESSION['estadoServer']) === 'registado') {
+                ?>
+                <div>
+                    <h2>A sua conta ainda nao foi validada pelos Admins</h2>
+                    <a href="logout.php"><button type="button">Retroceder</button></a>
+                </div>
+                <?php
+            }
+        }
 
         if (isset($_SESSION['username']) === true) {
-            if (isset($_SESSION['estadoServer']) === '2') {
+            if (($_SESSION['estadoServer']) === 'aprovado') {
                 ?>
                 <div>
                     <h2>Username: <span><?php echo $_SESSION['username'] ?></span></h2>
@@ -49,22 +63,13 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
                     <a href="CriarDocumento.php"><button type="button">Doc Upload</button></a>
                 </div>
                 <?php
+                $docs = new DocumentoManager();
+                $list = $docs->ShowAll();
             }
         }
         ?>
 
-        <?php
-        $manager = new DocumentoManager();
-        $lista = $manager->getDocuments();
-        foreach ($lista as $value) {
-            ?>
-            <fieldset>
-                <h2><?php echo $value->getTitulo() ?> </h2>
-                <p><?php echo $value->getResumo() ?></p>
-                <p><?php echo $value->getAutor() ?></p>
-                <a href="detalhesDocumento.php?cod=<?php echo $value->getId() ?>">Mais...</a>
-            </fieldset>
-        <?php } ?>
+
     </body>
 </html>
 

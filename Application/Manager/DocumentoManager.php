@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . './../../Config.php';
 require_once Config::getApplicationDatabasePath() . 'MyDataAccessPDO.php';
 require_once Config::getApplicationModelPath() . 'Documento.php';
@@ -31,6 +30,21 @@ class DocumentoManager extends MyDataAccessPDO {
             return $listaDoc;
         } catch (Exception $e) {
             throw $e;
+        }
+    }
+
+    public function ShowAll() {
+        $manager = new DocumentoManager();
+        $lista = $manager->getDocuments();
+        foreach ($lista as $value) {
+            ?>
+            <fieldset>
+                <h2><?php echo $value->getTitulo() ?> </h2>
+                <p><?php echo $value->getResumo() ?></p>
+                <p><?php echo $value->getAutor() ?></p>
+                <a href="detalhesDocumento.php?cod=<?php echo $value->getId() ?>">Mais...</a>
+            </fieldset>
+            <?php
         }
     }
 

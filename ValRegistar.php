@@ -49,7 +49,7 @@ if (filter_has_var($inputType, 'registar')) {
         $errors['password'] = 'A password não existe';
     }
     $tipo = 2;
-    $estadoServer = 1;
+    $estadoServer = 'registado';
     $manager = new userManager();
     if ($manager->utilizadorExists($username)) {
         $erros['existe'] = 'utilizador existente';
