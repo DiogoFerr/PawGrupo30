@@ -35,18 +35,21 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
                 $manager = new userManager();
                 $lista = $manager->getUsers();
                 foreach ($lista as $value) {
-                    ?>
-                    <tr>
-                        <td><?php echo $value->getUsername() ?> </td>
-                        <td><input id="<?php echo $value->getId() ?>" name="username" type="checkbox"></td>
-                    </tr>
-                    <?php
+                    if($value->getTipo() === '2') {
+                        ?>
+                        <tr>
+                            <td><?php echo $value->getUsername() ?> </td>
+                            <td><input id="<?php echo $value->getId() ?>" name="username" type="checkbox"></td>
+                        </tr>
+                        <?php
+                    }
                 }
                 ?>
             </table>
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
             <input name="ficheiro" type="file" id="ficheiro">
             <input name="upload" type="submit" id="upload" value="upload">
+            <a href="index.php"><button type="button">Cancelar</button></a>
         </form>
     </body>
 </html>

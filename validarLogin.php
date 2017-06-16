@@ -10,11 +10,15 @@ if (filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING) && filter_input
 
     $manager = new userManager();
     $enc_pass = sha1($password);
+    $state;
 
 
     if ($manager->exists_login($username, $enc_pass)) {
         session_start();
+        $state=$manager->gettingUserServerState($state);
         $_SESSION['username'] = $username;
+        $_SESSION['estadoServer'] = $state;
+
         echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
     } else {
         echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';

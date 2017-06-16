@@ -49,6 +49,14 @@ class userManager extends MyDataAccessPDO {
         }
     }
 
+    public function gettingUserServerState($state) {
+        try {
+            return $this->getRecords(self::SQL_TABLE_NAME, Array('estadoServer' => $state));
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
     public function delete_user($utilizador) {
         try {
             return $this->delete(self::SQL_TABLE_NAME, Array('username' => $utilizador));
@@ -80,11 +88,11 @@ class userManager extends MyDataAccessPDO {
         }
     }
 
-    public function registarUtilizador($id,$username, $nome, $morada, $contacto, $password) {
+    public function registarUtilizador($id, $username, $nome, $morada, $contacto, $password, $tipo, $estadoServer) {
 
         $enc_password = sha1($password);
 
-        $user = new Utilizador($id,$username, $nome, $morada, $contacto, $enc_password);
+        $user = new Utilizador($id, $username, $nome, $morada, $contacto, $enc_password, $tipo, $estadoServer);
 
         try {
             $this->insert(static::SQL_TABLE_NAME, $user->convertObjectToArray());

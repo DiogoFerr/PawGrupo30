@@ -29,14 +29,27 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
             </form>
             <?php
         }
+
         if (isset($_SESSION['username']) === true) {
-            ?>
-            <div>
-                <h2>Username: <span><?php echo $_SESSION['username'] ?></span></h2>
-                <a href="logout.php"><button type="button">Logout</button></a>
-                <a href="CriarDocumento.php"><button type="button">Doc Upload</button></a>
-            </div>
-            <?php
+            if (isset($_SESSION['estadoServer']) === '1') {
+                ?>
+                <h2>A sua conta ainda nao foi validada pelos Admins</h2>
+                <a href="index.php"><button type="button">Retroceder</button></a>
+                <?php
+            }
+        }
+
+
+        if (isset($_SESSION['username']) === true) {
+            if (isset($_SESSION['estadoServer']) === '2') {
+                ?>
+                <div>
+                    <h2>Username: <span><?php echo $_SESSION['username'] ?></span></h2>
+                    <a href="logout.php"><button type="button">Logout</button></a>
+                    <a href="CriarDocumento.php"><button type="button">Doc Upload</button></a>
+                </div>
+                <?php
+            }
         }
         ?>
 

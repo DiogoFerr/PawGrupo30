@@ -7,7 +7,7 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
 $errors = array();
 $inputType = INPUT_POST;
 
-if(filter_has_var($inputType, 'registar') ){
+if (filter_has_var($inputType, 'registar')) {
 
     if (filter_has_var($inputType, 'username')) {
         $username = filter_input($inputType, 'username', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
@@ -48,16 +48,17 @@ if(filter_has_var($inputType, 'registar') ){
     } else {
         $errors['password'] = 'A password não existe';
     }
+    $tipo = 2;
+    $estadoServer = 1;
     $manager = new userManager();
     if ($manager->utilizadorExists($username)) {
         $erros['existe'] = 'utilizador existente';
     }
     if (count($errors) > 0) {
-     
+        
     } else {
-        $manager->registarUtilizador(NULL,$username, $nome, $morada, $contacto, $password);
+        $manager->registarUtilizador(NULL, $username, $nome, $morada, $contacto, $password, $tipo, $estadoServer);
         echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
-
     }
 }
     

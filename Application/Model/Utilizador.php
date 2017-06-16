@@ -10,13 +10,18 @@ class Utilizador {
     private $morada;
     private $contacto;
     private $password;
-    function __construct($id, $username, $nome, $morada, $contacto, $password) {
-        $this->id=$id;
+    private $tipo;
+    private $estadoServer;
+
+    function __construct($id, $username, $nome, $morada, $contacto, $password, $tipo, $estadoServer) {
+        $this->id = $id;
         $this->username = $username;
         $this->nome = $nome;
         $this->morada = $morada;
         $this->contacto = $contacto;
         $this->password = $password;
+        $this->tipo = $tipo;
+        $this->estadoServer = $estadoServer;
     }
 
     function getId() {
@@ -37,6 +42,14 @@ class Utilizador {
 
     function getContacto() {
         return $this->contacto;
+    }
+
+    function getTipo() {
+        return $this->tipo;
+    }
+
+    function getEstadoServer() {
+        return $this->estadoServer;
     }
 
     function getPassword() {
@@ -67,29 +80,35 @@ class Utilizador {
         $this->password = $password;
     }
 
+    function setTipo($tipo) {
+        $this->tipo = $tipo;
+    }
+
+    function setEstadoServer($estadoServer) {
+        $this->estadoServer = $estadoServer;
+    }
+
     public function convertObjectToArray() {
         $data = array('id' => $this->getId(),
             'username' => $this->getUsername(),
             'nome' => $this->getNome(),
             'morada' => $this->getMorada(),
             'contacto' => $this->getContacto(),
-            'password' => $this->getPassword());
+            'password' => $this->getPassword(),
+            'tipo' => $this->getTipo(),
+            'estadoServer' => $this->getEstadoServer()
+        );
 
         return $data;
     }
 
     public static function convertArrayToObject(Array &$data) {
         return self::createObject(
-                        $data['id'], 
-                        $data['username'], 
-                        $data['nome'], 
-                        $data['morada'], 
-                        $data['contacto'], 
-                        $data['password']);
+                        $data['id'], $data['username'], $data['nome'], $data['morada'], $data['contacto'], $data['password'], $data['tipo'], $data['estadoServer']);
     }
 
-    public static function createObject($id, $username, $nome, $morada, $contacto, $password) {
-        $utilizador = new Utilizador($id, $username, $nome, $morada, $contacto, $password);
+    public static function createObject($id, $username, $nome, $morada, $contacto, $password, $tipo, $estadoServer) {
+        $utilizador = new Utilizador($id, $username, $nome, $morada, $contacto, $password, $tipo, $estadoServer);
 
         return $utilizador;
     }
