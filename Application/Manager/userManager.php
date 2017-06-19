@@ -65,7 +65,7 @@ class userManager extends MyDataAccessPDO {
         }
     }
 
-    public function update_pass($user, $utilizador) {
+    public function update_state($user, $utilizador) {
         try {
             return $this->update(self::SQL_TABLE_NAME, Array(
                         'username' => $utilizador->getUsername(),
