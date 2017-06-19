@@ -9,9 +9,10 @@ $uManager = new userManager();
 $user = $_POST['username'];
 $state = $_POST['estadoServer'];
 
-$result= $uManager->getUserByName($user);
+$utilizador= $uManager->getUserByName($user);
 echo($user);
 
+$uManager->updateUserState($utilizador->getId(),$utilizador->getUsername(),$utilizador->getNome(),$utilizador->getMorada(),$utilizador->getContacto(),$utilizador->getPassword(),$utilizador->getTipo(),$state);
 
 
 
