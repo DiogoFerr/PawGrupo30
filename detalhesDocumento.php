@@ -17,7 +17,7 @@ $doc = $dManager->getDocById($idDoc);
 <h2>Data de criação: <?php echo $doc[0]->getDataCriacao() ?></h2>
 <h2>Palavras Chave: <?php echo $doc[0]->getPalavrasChave() ?></h2>
 <a href="index.php"><button type="button">Retroceder</button></a>
-<a href=""><button type="button">Download</button></a>
+<a href="download.php?id=<?php echo $idDoc ?>"><button type="button">Download</button></a>
 
 
 
