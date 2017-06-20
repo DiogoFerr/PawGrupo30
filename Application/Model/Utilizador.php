@@ -102,16 +102,9 @@ class Utilizador {
         return $data;
     }
 
-    public static function convertArrayToObject(Array &$data) {
+    public static function convertArrayToObject(Array $data) {
         return self::createObject(
-                        $data['id'], 
-                        $data['username'], 
-                        $data['nome'], 
-                        $data['morada'], 
-                        $data['contacto'], 
-                        $data['password'], 
-                        $data['tipo'], 
-                        $data['estadoServer']);
+                        $data['id'], $data['username'], $data['nome'], $data['morada'], $data['contacto'], $data['password'], $data['tipo'], $data['estadoServer']);
     }
 
     public static function createObject($id, $username, $nome, $morada, $contacto, $password, $tipo, $estadoServer) {
@@ -120,6 +113,11 @@ class Utilizador {
         return $utilizador;
     }
 
-   
+    public static function convertToObject($array) {
+        $user = new Utilizador(
+                $array['username'], $array['nome'], $array['morada'], $array['contacto'], $array['password'], $array['tipo'], $array['estadoServer']
+        );
+        return $user;
+    }
 
 }
