@@ -22,30 +22,6 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
             <textarea name="resumo" id="resumo"></textarea>
             <label for="palavras">Palavras Chave:</label>
             <input type="text" name="palavras" id="palavras" required="true">
-            <label>Tipo:</label>
-            <input type="radio" name="tipo" checked="true" value="1"> Privado<br>
-            <input type="radio" name="tipo" value="2"> Publico<br>
-            <input type="radio" id="partilhar" name="tipo" value="3"> Partilhar
-            <table   id="partilhar" style="width:20%">
-                <tr>
-                    <th>Nome do Utilizador</th>
-                    <th>Partilhar?</th> 
-                </tr>
-                <?php
-                $manager = new userManager();
-                $lista = $manager->getUsers();
-                foreach ($lista as $value) {
-                    if ($value->getTipo() === '2') {
-                        ?>
-                        <tr>
-                            <td><?php echo $value->getUsername() ?> </td>
-                            <td><input id="<?php echo $value->getId() ?>" name="username" type="checkbox"></td>
-                        </tr>
-                        <?php
-                    }
-                }
-                ?>
-            </table>
             <input type="hidden" name="MAX_FILE_SIZE" value="2000000">
             <input name="ficheiro" type="file" id="ficheiro">
             <input name="upload" type="submit" id="upload" value="upload">

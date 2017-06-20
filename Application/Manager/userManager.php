@@ -65,17 +65,14 @@ class userManager extends MyDataAccessPDO {
         }
     }
 
-    public function update_state($user, $utilizador) {
+    public function update_state($id, $username, $nome, $morada, $contacto, $enc_password, $tipo, $estadoServer) {
+        
+         $user = new Utilizador($id, $username, $nome, $morada, $contacto, $enc_password, $tipo, $estadoServer);
+
         try {
-            return $this->update(self::SQL_TABLE_NAME, Array(
-                        'username' => $utilizador->getUsername(),
-                        'password' => $utilizador->getPassword(),
-                        'nome' => $utilizador->getNome(),
-                        'contacto' => $utilizador->getContacto(),
-                        'morada' => $utilizador->getMorada(),
-                            ), Array('username' => $user));
-        } catch (Exception $e) {
-            throw $e;
+            $this->update(static::SQL_TABLE_NAME, $user->convertObjectToArray(), Array('username'=>$username));
+        } catch (Exception $ex) {
+            
         }
     }
 

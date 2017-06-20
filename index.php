@@ -62,10 +62,11 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
                     <h2>Username: <span><?php echo $_SESSION['username'] ?></span></h2>
                     <a href="logout.php"><button type="button">Logout</button></a>
                     <a href="CriarDocumento.php"><button type="button">Doc Upload</button></a>
+                    <a href="MeusDoc.php"><button type="button">Meus Documentos</button></a>
                 </div>
                 <?php
                 $docs = new DocumentoManager();
-                $list = $docs->ShowAll();
+                $list = $docs->Showoutro();
             }
         }
 

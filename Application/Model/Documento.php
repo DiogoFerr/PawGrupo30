@@ -14,9 +14,10 @@ class Documento {
     private $palavrasChave;
     private $tamanho;
     private $estado;
+    private $username;
 
-    function __construct($id ,$nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado) {
-        $this->id= $id;
+    function __construct($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado, $username) {
+        $this->id = $id;
         $this->nome = $nome;
         $this->tipo = $tipo;
         $this->titulo = $titulo;
@@ -28,6 +29,15 @@ class Documento {
         $this->palavrasChave = $palavrasChave;
         $this->tamanho = $tamanho;
         $this->estado = $estado;
+        $this->username = $username;
+    }
+
+    function getUsername() {
+        return $this->username;
+    }
+
+    function setUsername($username) {
+        $this->username = $username;
     }
 
     function getId() {
@@ -117,6 +127,7 @@ class Documento {
     function setTamanho($tamanho) {
         $this->tamanho = $tamanho;
     }
+
     function getEstado() {
         return $this->estado;
     }
@@ -125,7 +136,7 @@ class Documento {
         $this->estado = $estado;
     }
 
-        public function convertObjectToArray() {
+    public function convertObjectToArray() {
         $data = array('id' => $this->getId(),
             'nomeFicheiro' => $this->getNome(),
             'tipo' => $this->getTipo(),
@@ -137,29 +148,32 @@ class Documento {
             'conteudo' => $this->getConteudo(),
             'palavrasChave' => $this->getPalavrasChave(),
             'tamanho' => $this->getTamanho(),
-            'estado' =>$this->getEstado()
+            'estado' => $this->getEstado(),
+            'username' => $this->getUsername()
         );
 
         return $data;
     }
-     public static function convertArrayToObject(Array &$data) {
+
+    public static function convertArrayToObject(Array &$data) {
         return self::createObject(
                         $data['id'], 
                         $data['nomeFicheiro'], 
                         $data['tipo'], 
                         $data['titulo'], 
-                        $data['autor'],
+                        $data['autor'], 
                         $data['resumo'], 
-                        $data['categoria'],
-                        $data['dataCriacao'],
-                        $data['conteudo'],
-                        $data['palavrasChave'],
-                        $data['tamanho'],
-                        $data['estado']);
+                        $data['categoria'], 
+                        $data['dataCriacao'], 
+                        $data['conteudo'], 
+                        $data['palavrasChave'], 
+                        $data['tamanho'], 
+                        $data['estado'],
+                        $data['username']);
     }
 
-    public static function createObject($id,$nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho,$estado) {
-        $documento = new Documento($id,$nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho,$estado);
+    public static function createObject($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado,$username) {
+        $documento = new Documento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado,$username);
 
         return $documento;
     }

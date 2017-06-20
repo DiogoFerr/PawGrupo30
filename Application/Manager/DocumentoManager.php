@@ -7,9 +7,9 @@ class DocumentoManager extends MyDataAccessPDO {
 
     const SQL_TABLE_NAME = 'documento';
 
-    public function registarDocumento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado) {
+    public function registarDocumento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username) {
 
-        $documento = new Documento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado);
+        $documento = new Documento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username);
 
         try {
             $this->insert(static::SQL_TABLE_NAME, $documento->convertObjectToArray());
@@ -18,9 +18,9 @@ class DocumentoManager extends MyDataAccessPDO {
         }
     }
 
-    public function getDocuments() {
+    public function getDocById($id) {
         try {
-            $lista = $this->getRecords(self::SQL_TABLE_NAME);
+            $lista = $this->getRecords(self::SQL_TABLE_NAME, Array('id' => $id));
             $listaDoc = array();
             $i = 0;
             foreach ($lista as $value) {
@@ -33,9 +33,50 @@ class DocumentoManager extends MyDataAccessPDO {
         }
     }
 
+    public function getPublicDocuments() {
+        try {
+            $lista = $this->getRecords(self::SQL_TABLE_NAME, Array('estado' => 2));
+            $listaDoc = array();
+            $i = 0;
+            foreach ($lista as $value) {
+                $listaDoc[$i] = Documento::convertArrayToObject($value);
+                $i++;
+            }
+            return $listaDoc;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function getMyDocuments($username) {
+        try {
+            $lista = $this->getRecords(self::SQL_TABLE_NAME, Array('username' => $username));
+            $listaDoc = array();
+            $i = 0;
+            foreach ($lista as $value) {
+                $listaDoc[$i] = Documento::convertArrayToObject($value);
+                $i++;
+            }
+            return $listaDoc;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+    public function updateDocumento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username) {
+
+        $documento = new Documento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username);
+
+        try {
+            $this->update(static::SQL_TABLE_NAME, $documento->convertObjectToArray(), Array('id' => $id));
+        } catch (Exception $ex) {
+            
+        }
+    }
+
     public function ShowAll() {
         $manager = new DocumentoManager();
-        $lista = $manager->getDocuments();
+        $lista = $manager->getPublicDocuments();
         foreach ($lista as $value) {
             ?>
             <fieldset>
@@ -45,6 +86,23 @@ class DocumentoManager extends MyDataAccessPDO {
                 <a href="detalhesDocumento.php?cod=<?php echo $value->getId() ?>">Mais...</a>
             </fieldset>
             <?php
+        }
+    }
+
+    public function Showoutro() {
+        $manager = new DocumentoManager();
+        $lista = $manager->getPublicDocuments();
+        foreach ($lista as $value) {
+            if (!($value->getUsername() == $_SESSION['username'])) {
+                ?>
+                <fieldset>
+                    <h2><?php echo $value->getTitulo() ?> </h2>
+                    <p><?php echo $value->getResumo() ?></p>
+                    <p><?php echo $value->getAutor() ?></p>
+                    <a href="detalhesDocumento.php?cod=<?php echo $value->getId() ?>">Mais...</a>
+                </fieldset>
+                <?php
+            }
         }
     }
 
