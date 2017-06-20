@@ -10,6 +10,7 @@ session_start();
 
 require_once (realpath(dirname(__FILE__)) . '/Config.php');
 require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
+require_once Config::getApplicationManagerPath() . 'DocUtilManager.php';
 ?>
 
 <html>
@@ -68,9 +69,21 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
                 <?php
                 $docs = new DocumentoManager();
                 $list = $docs->Showoutro();
+                $docsP = new DocUtilManager();
+                $partilhados = $docsP->getDocByUsername($_SESSION['username']);
+                foreach ($partilhados as $value) {
+                    $doc = $docs->getDocById($value->getCodDoc());
+                    ?>
+                    <fieldset>
+                        <h2><?php echo $doc[0]->getTitulo() ?> </h2>
+                        <p><?php echo $doc[0]->getResumo() ?></p>
+                        <p><?php echo $doc[0]->getAutor() ?></p>
+                        <a href="detalhesDocumento.php?id=<?php echo $doc[0]->getId() ?>">Mais...</a>
+                    </fieldset>
+                    <?php
+                }
             }
         }
-
         if (isset($_SESSION['username']) === true) {
             if (($_SESSION['estadoServer']) === 'banido') {
                 ?>
@@ -78,10 +91,10 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
                     <h2>Foste mandado com o caralho por ma utilização do site</h2>
                     <a href="logout.php"><button type="button">Retroceder</button></a>
                 </div>
-                <?php
-            }
-        }
-        ?>
+        <?php
+    }
+}
+?>
 
 
     </body>
