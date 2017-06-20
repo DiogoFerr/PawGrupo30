@@ -53,7 +53,7 @@ class userManager extends MyDataAccessPDO {
             $user = Utilizador::convertObjectToArray($lista[0]);
             return $user;
         } catch (Exception $e) {
-            return;
+            return $e;
         }
     }
 
@@ -66,11 +66,11 @@ class userManager extends MyDataAccessPDO {
     }
 
     public function update_state($id, $username, $nome, $morada, $contacto, $enc_password, $tipo, $estadoServer) {
-        
-         $user = new Utilizador($id, $username, $nome, $morada, $contacto, $enc_password, $tipo, $estadoServer);
+
+        $user = new Utilizador($id, $username, $nome, $morada, $contacto, $enc_password, $tipo, $estadoServer);
 
         try {
-            $this->update(static::SQL_TABLE_NAME, $user->convertObjectToArray(), Array('username'=>$username));
+            $this->update(static::SQL_TABLE_NAME, $user->convertObjectToArray(), Array('username' => $username));
         } catch (Exception $ex) {
             
         }
