@@ -16,6 +16,7 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
     <head>
         <meta charset="UTF-8">
         <title></title>
+        <link rel="stylesheet" href="Application/Utilis/css/newcss.css"/>
     </head>
     <body>
         <?php
