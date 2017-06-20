@@ -83,7 +83,7 @@ class DocumentoManager extends MyDataAccessPDO {
                 <h2><?php echo $value->getTitulo() ?> </h2>
                 <p><?php echo $value->getResumo() ?></p>
                 <p><?php echo $value->getAutor() ?></p>
-                <a href="detalhesDocumento.php?cod=<?php echo $value->getId() ?>">Mais...</a>
+                <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>
             </fieldset>
             <?php
         }
@@ -99,7 +99,7 @@ class DocumentoManager extends MyDataAccessPDO {
                     <h2><?php echo $value->getTitulo() ?> </h2>
                     <p><?php echo $value->getResumo() ?></p>
                     <p><?php echo $value->getAutor() ?></p>
-                    <a href="detalhesDocumento.php?cod=<?php echo $value->getId() ?>">Mais...</a>
+                    <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>
                 </fieldset>
                 <?php
             }
