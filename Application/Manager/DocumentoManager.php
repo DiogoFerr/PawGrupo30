@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="Application/Utilis/css/newcss.css"/>
 <?php
 require_once __DIR__ . './../../Config.php';
 require_once Config::getApplicationDatabasePath() . 'MyDataAccessPDO.php';

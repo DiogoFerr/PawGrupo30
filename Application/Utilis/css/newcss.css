@@ -2,3 +2,8 @@ body{
     background-image: url("../images/backGround.jpg");
     background-size: 100%;
 }
+
+fieldset{
+    background-color: yellow;
+    
+}

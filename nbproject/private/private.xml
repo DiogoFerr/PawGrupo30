@@ -3,13 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/Application/Model/Documento.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/Application/Manager/userManager.php</file>
+            <file>file:/C:/xampp/htdocs/PawGrupo30/ValidarEditar.php</file>
             <file>file:/C:/xampp/htdocs/PawGrupo30/gerirUsers.php</file>
             <file>file:/C:/xampp/htdocs/PawGrupo30/index.php</file>
             <file>file:/C:/xampp/htdocs/PawGrupo30/areaAdmin.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/validarEditUser.php</file>
+            <file>file:/C:/xampp/htdocs/PawGrupo30/Application/Manager/DocumentoManager.php</file>
+            <file>file:/C:/xampp/htdocs/PawGrupo30/Application/Utilis/css/newcss.css</file>
             <file>file:/C:/xampp/htdocs/PawGrupo30/editarUser.php</file>
+            <file>file:/C:/xampp/htdocs/PawGrupo30/detalhesDocumento.php</file>
         </group>
     </open-files>
 </project-private>
