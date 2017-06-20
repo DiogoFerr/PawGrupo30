@@ -23,6 +23,14 @@ class DocUtilManager extends MyDataAccessPDO {
             throw $e;
         }
     }
+    
+     public function delete_doc($id) {
+        try {
+            return $this->delete(self::SQL_TABLE_NAME, Array('codDoc' => $id));
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 
     public function getDocByUsername($username) {
         try {

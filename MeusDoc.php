@@ -19,8 +19,10 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
                 <h2><?php echo $value->getTitulo() ?> </h2>
                 <p><?php echo $value->getResumo() ?></p>
                 <p><?php echo $value->getAutor() ?></p>
-                <a href="EditarDocumento.php?cod=<?php echo $value->getId() ?>">Editar</a>
-                <a href="detalhesDocumento.php?cod=<?php echo $value->getId() ?>">Mais...</a>
+                <a href="EditarDocumento.php?id=<?php echo $value->getId() ?>">Editar</a>
+                <a href="ApagarDocumento.php?id=<?php echo $value->getId() ?>">Apagar</a>
+                <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>
+
             </fieldset>
             <?php
         }

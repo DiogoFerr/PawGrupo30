@@ -6,7 +6,7 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
 
 require_once Config::getApplicationManagerPath() . 'userManager.php';
 
-$id = $_GET['cod'];
+$id = $_GET['id'];
 $dManager = new DocumentoManager();
 $doc = $dManager->getDocById($id);
 ?>
