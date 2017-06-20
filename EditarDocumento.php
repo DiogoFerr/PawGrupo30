@@ -19,17 +19,17 @@ $doc = $dManager->getDocById($id);
         <form method="post" action="ValidarEditar.php" enctype="multipart/form-data">
 
             <label for="titulo">Titulo: </label>
-            <input type="text" name="titulo" id="titulo" required="true">
+            <input type="text" name="titulo" id="titulo" required="true" >
             <label for="autor">Autor: </label>
             <input type="text" name="autor" id="autor" required="true">
             <label for="categoria">Categoria: </label>
-            <input type="text" name="categoria" id="categoria" required="true">
+            <input type="text" name="categoria" id="categoria"required="true">
             <label for="palavras">Palavras Chave:</label>
-            <input type="text" name="palavras" id="palavras" required="true">
+            <input type="text" name="palavras" id="palavras"required="true">
 
-            <input type="radio" name="tipo" value="male"> Male<br>
-            <input type="radio" name="tipo" value="female"> Female<br>
-            <input type="radio" name="tipo" value="other"> Other
+            <input type="radio" name="tipo" value="1"> Privado<br>
+            <input type="radio" name="tipo" value="2"> Publico<br>
+            <input type="radio" name="tipo" value="3"> Partilhado
 
             <table   id="partilhar" style="width:20%">
                 <tr>

@@ -69,6 +69,7 @@ if (filter_has_var($inputType, 'cod')) {
                 }
             }
         }
+
         $dManager->updateDocumento($doc[0]->getId(), $doc[0]->getNome(), $doc[0]->getTipo(), $titulo, $autor, $doc[0]->getResumo(), $categoria, $doc[0]->getDataCriacao(), $doc[0]->getConteudo(), $palavras, $doc[0]->getTamanho(), $estado, $doc[0]->getUsername());
         echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/MeusDoc.php">';
     }
