@@ -80,9 +80,9 @@ class DocumentoManager extends MyDataAccessPDO {
         foreach ($lista as $value) {
             ?>
             <fieldset>
-                <h2><?php echo $value->getTitulo() ?> </h2>
-                <p><?php echo $value->getResumo() ?></p>
-                <p><?php echo $value->getAutor() ?></p>
+                <h2>Titulo: <?php echo $value->getTitulo() ?> </h2>
+                <p>Resumo: <?php echo $value->getResumo() ?></p>
+                <p>Autor: <?php echo $value->getAutor() ?></p>
                 <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>
             </fieldset>
             <?php
@@ -96,9 +96,9 @@ class DocumentoManager extends MyDataAccessPDO {
             if (!($value->getUsername() == $_SESSION['username'])) {
                 ?>
                 <fieldset>
-                    <h2><?php echo $value->getTitulo() ?> </h2>
-                    <p><?php echo $value->getResumo() ?></p>
-                    <p><?php echo $value->getAutor() ?></p>
+                    <h2>Titulo: <?php echo $value->getTitulo() ?> </h2>
+                    <p>Resumo: <?php echo $value->getResumo() ?></p>
+                    <p>Autor: <?php echo $value->getAutor() ?></p>
                     <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>
                 </fieldset>
                 <?php

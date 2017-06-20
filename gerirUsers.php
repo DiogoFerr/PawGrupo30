@@ -27,9 +27,22 @@ foreach ($users as $valueU) {
         if ($valueU['estadoServer'] === 'aprovado') {
             ?>
             <h4>Username: <?php echo $valueU['username'] ?></h4>
+            <a href="editarUser.php?username=<?php echo $valueU['username']; ?>">Editar</a>
             <?php
         }
     }
 }
 ?>
 <hr>
+<h2>Banidos:</h2>
+<?php
+foreach ($users as $valueU) {
+    if ($valueU['tipo'] === '2') {
+        if ($valueU['estadoServer'] === 'banido') {
+            ?>
+            <h4>Username: <?php echo $valueU['username'] ?></h4>
+            <a href="editarUser.php?username=<?php echo $valueU['username']; ?>">Editar</a>
+            <?php
+        }
+    }
+}
