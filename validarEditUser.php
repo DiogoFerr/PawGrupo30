@@ -1,8 +1,9 @@
 <?php
 
-require_once './Config.php';
-require_once './Application/Manager/userManager.php';
-require_once './Application/Model/Utilizador.php';
+
+require_once __DIR__ . '/Config.php';
+require_once Config::getApplicationManagerPath() . 'userManager.php';
+require_once Config::getApplicationModelPath() .'Utilizador.php';
 
 $uManager = new userManager();
 
