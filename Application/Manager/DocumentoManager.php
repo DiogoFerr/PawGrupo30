@@ -19,6 +19,22 @@ class DocumentoManager extends MyDataAccessPDO {
         }
     }
 
+    public function pesquisarPublicos($pesquisa, $campo) {
+        try {
+            $consulta = $this->getRecordsByUserQuery("SELECT * FROM documento WHERE  estado = '2' AND $campo LIKE '%$pesquisa%'");
+            $lista = array();
+            $i = 0;
+            foreach ($consulta as $valor) {
+
+                $lista[$i] = Documento::convertArrayToObject($valor);
+                $i++;
+            }
+            return $lista;
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
     public function getDocById($id) {
         try {
             $lista = $this->getRecords(self::SQL_TABLE_NAME, Array('id' => $id));
@@ -71,7 +87,7 @@ class DocumentoManager extends MyDataAccessPDO {
             throw $e;
         }
     }
-    
+
     public function updateDocumento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username) {
 
         $documento = new Documento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username);
