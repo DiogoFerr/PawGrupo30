@@ -24,10 +24,6 @@ require_once __DIR__ . './ValRegistar.php';
             <button type="submit" name="registar" id="registar" value="registar">Registar</button>
 
         </form>
-        <p><?php
-            if (isset($errors)) {
-                print_r($errors);
-            }
-            ?></p>
+
     </body>
 </html>
