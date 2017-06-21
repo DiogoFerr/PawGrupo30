@@ -17,7 +17,12 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
             <label for="autor">Autor: </label>
             <input type="text" name="autor" id="autor" required="true">
             <label for="categoria">Categoria: </label>
-            <input type="text" name="categoria" id="categoria" required="true">
+            <select for="categoria" name="categoria">            
+            <option value="desporto">Desporto</option>
+            <option value="musica">Musica</option>
+            <option value="politica">Politica</option>
+            <option value="filmes">Filmes</option>
+            </select>
             <label for="resumo">Resumo:</label>
             <textarea name="resumo" id="resumo"></textarea>
             <label for="palavras">Palavras Chave:</label>

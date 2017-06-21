@@ -19,15 +19,22 @@ $doc = $dManager->getDocById($id);
         <form method="post" action="ValidarEditar.php" enctype="multipart/form-data">
 
             <label for="titulo">Titulo: </label>
-            <input type="text" name="titulo" id="titulo" required="true" >
+            <input type="text" name="titulo" required value="<?php echo $doc[0]->getTitulo() ?>">
             <label for="autor">Autor: </label>
-            <input type="text" name="autor" id="autor" required="true">
-            <label for="categoria">Categoria: </label>
-            <input type="text" name="categoria" id="categoria"required="true">
-            <label for="palavras">Palavras Chave:</label>
-            <input type="text" name="palavras" id="palavras"required="true">
+            <input type="text" name="autor" required value="<?php echo $doc[0]->getAutor() ?>">
 
-            <input type="radio" name="tipo" value="1"> Privado<br>
+            <label for="categoria">Categoria: </label>
+            <select for="categoria" name="categoria">            
+                <option value="desporto">Desporto</option>
+                <option value="musica">Musica</option>
+                <option value="politica">Politica</option>
+                <option value="filmes">Filmes</option>
+            </select>
+
+            <label for="palavras">Palavras Chave:</label>
+            <input type="text" name="palavras" required value="<?php echo $doc[0]->getPalavrasChave() ?>">
+
+            <br><input type="radio" name="tipo" checked="true" value="1"> Privado<br>
             <input type="radio" name="tipo" value="2"> Publico<br>
             <input type="radio" name="tipo" value="3"> Partilhado
 

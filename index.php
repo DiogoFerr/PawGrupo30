@@ -46,7 +46,7 @@ require_once Config::getApplicationManagerPath() . 'DocUtilManager.php';
                 if (($_SESSION['estadoServer']) === 'admin') {
                     ?>
                     <div>
-                        <h2>Voce é o mudafking boss</h2>
+                        <h2>Bem-vindo Administrador</h2>
                         <a href="areaAdmin.php"><button type="button">AreaAdmin</button></a>
                         <a href="logout.php"><button type="button">Loggout</button></a>
                     </div>
@@ -105,7 +105,7 @@ require_once Config::getApplicationManagerPath() . 'DocUtilManager.php';
                 if (($_SESSION['estadoServer']) === 'banido') {
                     ?>
                     <div>
-                        <h2>Foste mandado com o caralho por ma utilização do site</h2>
+                        <h2>Voce foi expulso de utilizar o site. Pedimos desculpa pelo incomodo</h2>
                         <a href="logout.php"><button type="button">Retroceder</button></a>
                     </div>
                     <?php

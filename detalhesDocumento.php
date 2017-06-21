@@ -6,7 +6,6 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
 $idDoc = $_GET["id"];
 
 $dManager= new DocumentoManager();
-
 $doc = $dManager->getDocById($idDoc);
 
 ?>
@@ -18,6 +17,7 @@ $doc = $dManager->getDocById($idDoc);
 <h2>Palavras Chave: <?php echo $doc[0]->getPalavrasChave() ?></h2>
 <a href="index.php"><button type="button">Retroceder</button></a>
 <a href="download.php?id=<?php echo $idDoc ?>"><button type="button">Download</button></a>
+<a href="lerConteudo.php?id=<?php echo $idDoc ?>"><button type="button">Ler</button></a>
 
 
 
