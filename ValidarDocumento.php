@@ -13,32 +13,34 @@ $inputType = INPUT_POST;
 
 if (filter_has_var($inputType, 'upload')) {
 
-    if (filter_has_var($inputType, 'autor')) {
-        $autor = filter_input($inputType, 'autor', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
-        if (!is_string($autor) || strlen($autor) < 6 || !preg_match("/^[a-zA-Z0-9 ]$/", $autor)) {
-            $erros['autor'] = 'O autor tem que ter pelo menos 6 caracteres';
-        }
-    } else {
-        $errors['autor'] = 'O autor não existe';
-    }
+//    if (filter_has_var($inputType, 'autor')) {
+//        $autor = filter_input($inputType, 'autor', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
+//        if (!is_string($autor) || strlen($autor) < 6 || !preg_match("/^[a-zA-Z0-9 ]$/", $autor)) {
+//            $erros['autor'] = 'O autor tem que ter pelo menos 6 caracteres';
+//        }
+//    } else {
+//        $errors['autor'] = 'O autor não existe';
+//    }
+//
+//    if (filter_has_var($inputType, 'titulo')) {
+//        $titulo = filter_input($inputType, 'titulo', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
+//        if (!is_string($titulo) || strlen($titulo) < 6 || !preg_match("/^[a-zA-Z0-9 ]$/", $titulo)) {
+//            $erros['titulo'] = 'O titulo tem que ter pelo menos 6 ';
+//        }
+//    } else {
+//        $errors['titulo'] = 'O titulo não existe';
+//    }
 
-    if (filter_has_var($inputType, 'titulo')) {
-        $titulo = filter_input($inputType, 'titulo', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
-        if (!is_string($titulo) || strlen($titulo) < 6 || !preg_match("/^[a-zA-Z0-9 ]$/", $titulo)) {
-            $erros['titulo'] = 'O titulo tem que ter pelo menos 6 ';
-        }
-    } else {
-        $errors['titulo'] = 'O titulo não existe';
-    }
-
-    if (filter_has_var($inputType, 'categoria')) {
-        $categoria = filter_input($inputType, 'categoria', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
-        if (!is_string($categoria) || !preg_match("/^[a-zA-Z0-9]$/", $categoria)) {
-            $erros['categoria'] = 'A categoria tem que ter pelo menos 6 caracteres';
-        }
-    } else {
-        $errors['categoria'] = 'A categoria não existe';
-    }
+//    if (filter_has_var($inputType, 'categoria')) {
+//        $categoria = filter_input($inputType, 'categoria', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
+//        if (!is_string($categoria) || !preg_match("/^[a-zA-Z0-9]$/", $categoria)) {
+//            $erros['categoria'] = 'A categoria tem que ter pelo menos 6 caracteres';
+//        }
+//    } else {
+//        $errors['categoria'] = 'A categoria não existe';
+//    }
+    
+    
     if (filter_has_var($inputType, 'palavras')) {
         $palavras = filter_input($inputType, 'palavras', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
         if (!is_string($palavras) || !preg_match("/^[a-zA-Z0-9 ]$/", $palavras)) {
@@ -61,8 +63,10 @@ if (filter_has_var($inputType, 'upload')) {
         $fileName = $_FILES['ficheiro']['name'];
         $tmpName = $_FILES['ficheiro']['tmp_name'];
         $fileSize = $_FILES['ficheiro']['size'];
+        $new_size = $file_size/1024;
         $fileType = $_FILES['ficheiro']['type'];
         $filedate = date('y-m-d h:i:s', time());
+        $folder="uploads/";
         $username = $_SESSION['username'];
         $fp = fopen($tmpName, 'r');
         $content = fread($fp, filesize($tmpName));
@@ -75,11 +79,13 @@ if (filter_has_var($inputType, 'upload')) {
         $errors['ficheiro'] = 'Ficheiro inexistente';
     }
     if (count($errors) > 0) {
-        
+  
     } else {
         $documentomanager = new DocumentoManager();
-
-        $documentomanager->registarDocumento(null, $fileName, $fileType, $titulo, $autor, $resumo, $categoria, $filedate, $content, $palavras, $fileSize, $estado = 1, $username);
-        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
+        if(move_uploaded_file($tmpName, $folder.$fileName)) {
+   
+            $documentomanager->registarDocumento(null, $fileName, $fileType, $fileName, $username, $resumo, $categoria, $filedate, $content, $palavras, $new_size, $estado = 1, $username);
+            echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
+        }
     }
 }

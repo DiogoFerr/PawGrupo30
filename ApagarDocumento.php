@@ -13,6 +13,15 @@ $dManager = new DocumentoManager();
 $doc = $dManager->getDocById($id);
 $duManager = new DocUtilManager();
 
+$data = $doc[0]->getTitulo();
+$dir = "uploads";
+$dirHandle = opendir($dir);
+while ($file = readdir($dirHandle)) {
+    if ($file === $data) {
+        unlink($dir . '/' . $file);
+    }
+}
+closedir($dirHandle);
 $dManager->delete_doc($id);
 
 $duManager->delete_doc($id);
