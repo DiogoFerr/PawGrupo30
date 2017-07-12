@@ -6,8 +6,6 @@ require_once __DIR__ . '/Config.php';
 
 require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
 
-
-
 $errors = array();
 $inputType = INPUT_POST;
 
@@ -31,16 +29,16 @@ if (filter_has_var($inputType, 'upload')) {
 //        $errors['titulo'] = 'O titulo não existe';
 //    }
 
-//    if (filter_has_var($inputType, 'categoria')) {
-//        $categoria = filter_input($inputType, 'categoria', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
-//        if (!is_string($categoria) || !preg_match("/^[a-zA-Z0-9]$/", $categoria)) {
-//            $erros['categoria'] = 'A categoria tem que ter pelo menos 6 caracteres';
-//        }
-//    } else {
-//        $errors['categoria'] = 'A categoria não existe';
-//    }
-    
-    
+    if (filter_has_var($inputType, 'categoria')) {
+        $categoria = filter_input($inputType, 'categoria', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
+        if (!is_string($categoria) || !preg_match("/^[a-zA-Z0-9]$/", $categoria)) {
+            $erros['categoria'] = 'A categoria tem que ter pelo menos 6 caracteres';
+        }
+    } else {
+        $errors['categoria'] = 'A categoria não existe';
+    }
+
+
     if (filter_has_var($inputType, 'palavras')) {
         $palavras = filter_input($inputType, 'palavras', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
         if (!is_string($palavras) || !preg_match("/^[a-zA-Z0-9 ]$/", $palavras)) {
@@ -49,28 +47,27 @@ if (filter_has_var($inputType, 'upload')) {
     } else {
         $errors['palavras'] = 'Ocorreu um erro com as palavras chave';
     }
-    if (filter_has_var($inputType, 'resumo')) {
-        $resumo = filter_input($inputType, 'resumo', FILTER_SANITIZE_STRING, FILTER_SANITIZE_SPECIAL_CHARS);
-        if (!is_string($resumo) || strlen($resumo) < 50) {
-            $erros['resumo'] = 'O resumo é muito curto';
-        }
-    } else {
-        $errors['resumo'] = 'Ocorreu um erro com o resumo';
-    }
 
 
     if ($_FILES['ficheiro']['size'] > 0) {
         $fileName = $_FILES['ficheiro']['name'];
         $tmpName = $_FILES['ficheiro']['tmp_name'];
         $fileSize = $_FILES['ficheiro']['size'];
-        $new_size = $file_size/1024;
         $fileType = $_FILES['ficheiro']['type'];
         $filedate = date('y-m-d h:i:s', time());
-        $folder="uploads/";
+        $folder = "uploads/";
         $username = $_SESSION['username'];
         $fp = fopen($tmpName, 'r');
         $content = fread($fp, filesize($tmpName));
         $content = addslashes($content);
+        fclose($fp);
+        $fp = fopen($tmpName, 'r');
+        $resumo = '';
+        $i = 0;
+        while (!(feof($fp)) || !($i = 5)) {
+            $resumo = $resumo . fgets($fp);
+            $i++;
+        }
         fclose($fp);
         if (!get_magic_quotes_gpc()) {
             $fileName = addslashes($fileName);
@@ -79,12 +76,11 @@ if (filter_has_var($inputType, 'upload')) {
         $errors['ficheiro'] = 'Ficheiro inexistente';
     }
     if (count($errors) > 0) {
-  
+        
     } else {
         $documentomanager = new DocumentoManager();
-        if(move_uploaded_file($tmpName, $folder.$fileName)) {
-   
-            $documentomanager->registarDocumento(null, $fileName, $fileType, $fileName, $username, $resumo, $categoria, $filedate, $content, $palavras, $new_size, $estado = 1, $username);
+        if (move_uploaded_file($tmpName, $folder . $fileName)) {
+            $documentomanager->registarDocumento(null, $fileName, $fileType, $fileName, $username, $resumo, $categoria, $filedate, $content, $palavras, $fileSize, $estado = 1, $username);
             echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
         }
     }

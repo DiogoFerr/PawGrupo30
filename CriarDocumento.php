@@ -19,13 +19,6 @@ require_once __DIR__ . './ValidarDocumento.php';
                 <option value="politica">Politica</option>
                 <option value="filmes">Filmes</option>
             </select>
-            <label for="resumo">Resumo:</label>
-            <textarea name="resumo" required="true" id="resumo"></textarea>
-            <p><?php
-                if (isset($errors['resumo'])) {
-                    echo $errors['resumo'];
-                }
-                ?></p>
             <label for="palavras">Palavras Chave:</label>
             <input type="text" name="palavras" id="palavras" required="true">
             <p><?php
