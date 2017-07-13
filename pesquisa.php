@@ -32,7 +32,7 @@ $campo = filter_input($inputType, 'campo');
             <fieldset>
                 <h2><?php echo $value->getTitulo() ?> </h2>
                 <p><?php echo $value->getResumo() ?></p>
-                <p><?php echo $value->getAutor() ?></p>
+                <p><?php echo $value->getUsername() ?></p>
                 <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>
             </fieldset>
         <?php }

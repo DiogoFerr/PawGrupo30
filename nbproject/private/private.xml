@@ -3,15 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/Application/Model/Comentario.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/Application/Manager/userManager.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/gerirUsers.php</file>
+            <file>file:/C:/xampp/htdocs/PawGrupo30/MeuPerfil.php</file>
             <file>file:/C:/xampp/htdocs/PawGrupo30/index.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/CriarDocumento.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/ValComentar.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/detalhesDocumento.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/Application/Manager/ComentarioManager.php</file>
-            <file>file:/C:/xampp/htdocs/PawGrupo30/ValidarDocumento.php</file>
+            <file>file:/C:/xampp/htdocs/PawGrupo30/Application/Utilis/css/newcss.css</file>
+            <file>file:/C:/xampp/htdocs/PawGrupo30/pesquisa.php</file>
         </group>
     </open-files>
 </project-private>
