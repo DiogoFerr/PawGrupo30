@@ -27,9 +27,9 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
         foreach ($list as $value) {
             ?>
             <fieldset>
-                <h2><?php echo $value->getTitulo() ?> </h2>
-                <p><?php echo $value->getResumo() ?></p>
-                <p><?php echo $value->getUsername() ?></p>
+                <h2>Titulo: <?php echo $value->getTitulo() ?> </h2>
+                <p>Resumo: <?php echo $value->getResumo() ?></p>
+                <p>Autor: <?php echo $value->getUsername() ?></p>
                 <a href="EditarDocumento.php?id=<?php echo $value->getId() ?>">Editar</a>
                 <a href="ApagarDocumento.php?id=<?php echo $value->getId() ?>">Apagar</a>
                 <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>

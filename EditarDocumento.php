@@ -21,7 +21,7 @@ $doc = $dManager->getDocById($id);
             <label for="titulo">Titulo: </label>
             <input type="text" name="titulo" required value="<?php echo $doc[0]->getTitulo() ?>">
             <label for="autor">Autor: </label>
-            <input type="text" name="autor" required value="<?php echo $doc[0]->getAutor() ?>">
+            <input type="text" name="autor" required value="<?php echo $doc[0]->getUsername() ?>">
 
             <label for="categoria">Categoria: </label>
             <select for="categoria" name="categoria">            
