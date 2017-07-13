@@ -1,7 +1,7 @@
+<link rel="stylesheet" href="Application/Utilis/css/newcss.css"/>
 <?php
 require_once __DIR__ . './Config.php';
 require_once __DIR__ . './ValidarDocumento.php';
-
 ?>
 <html>
     <head>
@@ -10,7 +10,17 @@ require_once __DIR__ . './ValidarDocumento.php';
         <script src="<?= Config::getApplicationJSPath() . 'jquery-2.2.4.min.js' ?> "></script>
         <script src="<?= Config::getApplicationJSPath() . 'CriarDocumento.js' ?>" ></script>
     </head>
+    <img src="Application/Utilis/images/top.jpg" alt="topkek" id="imagemtop">
     <body>
+        <nav>
+            <h2>Username: <span><?php echo $_SESSION['username'] ?></span></h2>
+            <ul>
+                <li><a href="logout.php">Logout</a></li>
+                <li><a href="CriarDocumento.php">Doc Upload</li>
+                <li><a href="MeusDoc.php">Meus Documentos</a></li>
+                <li><a href="MeuPerfil.php">Meu Perfil</a></li>
+            </ul>
+        </nav>
         <form method="post" enctype="multipart/form-data">
             <label for="categoria">Categoria: </label>
             <select for="categoria" name="categoria">            
@@ -34,7 +44,6 @@ require_once __DIR__ . './ValidarDocumento.php';
                 }
                 ?></p>
             <input name="upload" type="submit" id="upload" value="upload">
-            <a href="index.php"><button type="button">Cancelar</button></a>
         </form>
     </body>
 </html>
