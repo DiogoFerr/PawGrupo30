@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="Application/Utilis/css/newcss.css"/>
+<img src="Application/Utilis/images/top.jpg" alt="topkek" id="imagemtop">
 <?php
 session_start();
 
@@ -17,6 +19,17 @@ if (!isset($_SESSION['username']) && $doc[0]->getEstado() == 1) {
     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
 } else {
     ?>
+    <nav>
+        <form action="validarLogin.php" method="post">
+            <label>Username:<input type="text" name="username" required></label>
+            <label>Password:<input type="password" name="password" required></label>
+            <input type="submit" name="loginbutton" value="Login">
+            <a href="Registo.php"><button type="button">Registar</button></a>
+        </form>
+        <ul>
+            <li><a href="index.php">Home</a></li>
+        </ul>
+    </nav>
     <h2>Titulo: <?php echo $doc[0]->getTitulo() ?></h2>
     <h2>Autor: <?php echo $doc[0]->getUsername() ?></h2>
     <h2>Resumo: <?php echo $doc[0]->getResumo() ?></h2>
@@ -34,7 +47,7 @@ if (!isset($_SESSION['username']) && $doc[0]->getEstado() == 1) {
             ?>
             <tr>
                 <td><?php echo $value->getUtilizador() ?> : </td>
-                <td><?php echo $value->getComentario() ?></td>
+                <td id="comment"><?php echo $value->getComentario() ?></td>
                 <?php if (isset($_SESSION['username']) && $value->getUtilizador() == $_SESSION['username']) { ?>
                     <td><a href="apagarComentario.php?id=<?php echo $value->getId() ?>">Apagar</a></td>
                 <?php } ?>
@@ -51,7 +64,6 @@ if (!isset($_SESSION['username']) && $doc[0]->getEstado() == 1) {
             <input name="comentar" type="submit" id="comentar" value="comentar">
         </form>
     <?php } ?>
-    <a href="index.php"><button type="button">Retroceder</button></a>
     <a href="download.php?id=<?php echo $idDoc ?>"><button type="button">Download</button></a>
     <a href="lerConteudo.php?id=<?php echo $idDoc ?>"><button type="button">Ler</button></a>
     <?php
