@@ -54,18 +54,29 @@ if (filter_has_var($inputType, 'cod')) {
     }
 
     if (filter_has_var($inputType, 'tipo')) {
+        $docUtilManager = new DocUtilManager();
+        $manager = new userManager();
+        $lista = $manager->getUsers();
         if (filter_input($inputType, 'tipo') == 1) {
             $estado = 1;
+            foreach ($lista as $value) {
+                if (($docUtilManager->getExiste($doc[0]->getId(), $value['username']))) {
+                    $docUtilManager->delete_doc_user($value['username']);
+                }
+            }
         } else if (filter_input($inputType, 'tipo') == 2) {
             $estado = 2;
+            foreach ($lista as $value) {
+                if (($docUtilManager->getExiste($doc[0]->getId(), $value['username']))) {
+                    $docUtilManager->delete_doc_user($value['username']);
+                }
+            }
         } else {
             $estado = 3;
-            $docUtilManager = new DocUtilManager();
-            $manager = new userManager();
-            $lista = $manager->getUsers();
+
             foreach ($lista as $value) {
                 if (filter_has_var($inputType, 'username' . $value['id'])) {
-                    $docUtilManager->registarDocumentoPartilhado(null,$doc[0]->getId(), $value['username']);
+                    $docUtilManager->registarDocumentoPartilhado(null, $doc[0]->getId(), $value['username']);
                 }
             }
         }
