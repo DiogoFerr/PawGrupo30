@@ -15,6 +15,8 @@ $doc = $dManager->getDocById($id);
     <head>
         <meta charset="UTF-8">
         <title>Editar Documento</title>
+        <script src="Application/Utilis/JS/jquery.js"></script>
+        <script src="Application/Utilis/JS/CriarDocumento.js" type="text/javascript"> ></script>  
     </head>
     <body>
         <nav>
@@ -30,9 +32,9 @@ $doc = $dManager->getDocById($id);
         <form method="post" action="ValidarEditar.php" enctype="multipart/form-data">
 
             <label for="titulo">Titulo: </label>
-            <input type="text" name="titulo" required value="<?php echo $doc[0]->getTitulo() ?>"><br>
+            <input type="text" name="titulo" required value="<?php echo $doc[0]->getTitulo() ?>">
             <label for="autor">Autor: </label>
-            <input type="text" name="autor" required value="<?php echo $doc[0]->getUsername() ?>"><br>
+            <input type="text" name="autor" required value="<?php echo $doc[0]->getUsername() ?>">
 
             <label for="categoria">Categoria: </label>
             <select for="categoria" name="categoria">            
@@ -43,13 +45,13 @@ $doc = $dManager->getDocById($id);
             </select><br>
 
             <label for="palavras">Palavras Chave:</label>
-            <input type="text" name="palavras" required value="<?php echo $doc[0]->getPalavrasChave() ?>"><br><br>
+            <input type="text" name="palavras" required value="<?php echo $doc[0]->getPalavrasChave() ?>">
             <label>Estado do Documento</label>
-            <br><input type="radio" name="tipo" checked="true" value="1"> Privado<br>
-            <input type="radio" name="tipo" value="2"> Publico<br>
-            <input type="radio" name="tipo" value="3"> Partilhado
+            <input type="radio" id="tipo1" name="tipo" checked="true" value="1"> Privado
+            <input type="radio" id="tipo2" name="tipo" value="2"> Publico
+            <input type="radio" id="tipo3" name="tipo" value="3"> Partilhado
             <br>
-            <table   id="partilhar">
+            <table id="partilhar">
                 <tr>
                     <th>Nome do Utilizador</th>
                     <th>Partilhar?</th> 

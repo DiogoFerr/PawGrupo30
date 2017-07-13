@@ -7,7 +7,6 @@ require_once __DIR__ . './ValidarDocumento.php';
     <head>
         <meta charset="UTF-8">
         <title>Criar Documento</title>
-        
     </head>
     <img src="Application/Utilis/images/top.jpg" alt="topkek" id="imagemtop">
     <body>

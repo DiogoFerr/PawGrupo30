@@ -8,8 +8,8 @@ require_once __DIR__ . './ValRegistar.php';
     <head>
         <meta charset="UTF-8">
         <title>Registar</title>
-        <script src="<?= Config::getApplicationJSPath() . 'jquery-2.2.4.min.js' ?> "></script>
-        <script src="<?= Config::getApplicationJSPath() . 'RegistarVal.js' ?>" ></script>
+        <script src="Application/Utilis/JS/jquery.js"></script>
+        <script src="Application/Utilis/JS/RegistarVal.js" type="text/javascript"> ></script> 
     </head>
     <body>
         <nav>
