@@ -52,5 +52,12 @@ class ComentarioManager extends MyDataAccessPDO {
             throw $e;
         }
     }
+    public function apagarComentarioUser($username) {
+        try {
+            return $this->delete(self::SQL_TABLE_NAME, Array('utilizador' => $username));
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
 
 }
