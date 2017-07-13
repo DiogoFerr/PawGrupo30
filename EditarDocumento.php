@@ -6,7 +6,7 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
 
 require_once Config::getApplicationManagerPath() . 'userManager.php';
 
-$id = $_GET['id'];
+$id = filter_input(INPUT_GET, 'id');
 $dManager = new DocumentoManager();
 $doc = $dManager->getDocById($id);
 ?>
@@ -38,7 +38,7 @@ $doc = $dManager->getDocById($id);
             <input type="radio" name="tipo" value="2"> Publico<br>
             <input type="radio" name="tipo" value="3"> Partilhado
 
-            <table   id="partilhar" style="width:20%">
+            <table   id="partilhar">
                 <tr>
                     <th>Nome do Utilizador</th>
                     <th>Partilhar?</th> 
