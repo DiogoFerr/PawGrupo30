@@ -1,3 +1,5 @@
+<img src="Application/Utilis/images/top.jpg" alt="topkek" id="imagemtop">
+<link rel="stylesheet" href="Application/Utilis/css/newcss.css"/>
 <?php
 require_once __DIR__ . './Config.php';
 require_once __DIR__ . './ValRegistar.php';
@@ -10,6 +12,11 @@ require_once __DIR__ . './ValRegistar.php';
         <script src="<?= Config::getApplicationJSPath() . 'RegistarVal.js' ?>" ></script>
     </head>
     <body>
+        <nav>
+            <ul>
+                <li><a href="index.php">Voltar</a></li>
+            </ul>
+        </nav>
         <form id="registarForm" method="POST" action="" enctype="multipart/form-data">
             <label for="nome">Username: </label>
             <input type="text" name="username" id="username" required="true">
@@ -40,10 +47,10 @@ require_once __DIR__ . './ValRegistar.php';
                 }
                 ?></p>
             <label for="nome">Password: </label>
-            <input type="password" name="password" id="password" required="true">
+            <input type="password" name="password" id="password" required="true"><br>
             <button type="submit" name="registar" id="registar" value="registar">Registar</button>
 
         </form>
-        <a href="index.php"><button type="button">Voltar</button></a>
+
     </body>
 </html>

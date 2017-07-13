@@ -1,3 +1,4 @@
+<img src="Application/Utilis/images/top.jpg" alt="topkek" id="imagemtop">
 <?php
 session_start();
 require_once (realpath(dirname(__FILE__)) . '/Config.php');
@@ -16,12 +17,22 @@ $doc = $dManager->getDocById($id);
         <title>Editar Documento</title>
     </head>
     <body>
+        <nav>
+            <h2>Username: <span><?php echo $_SESSION['username'] ?></span></h2>
+            <ul>
+                <li><a href="index.php">Home</a></li>
+                <li><a href="CriarDocumento.php">Doc Upload</li>
+                <li><a href="MeusDoc.php">Meus Documentos</a></li>
+                <li><a href="MeuPerfil.php">Meu Perfil</a></li>
+                <li><a href="logout.php">Logout</a></li>
+            </ul>
+        </nav>
         <form method="post" action="ValidarEditar.php" enctype="multipart/form-data">
 
             <label for="titulo">Titulo: </label>
-            <input type="text" name="titulo" required value="<?php echo $doc[0]->getTitulo() ?>">
+            <input type="text" name="titulo" required value="<?php echo $doc[0]->getTitulo() ?>"><br>
             <label for="autor">Autor: </label>
-            <input type="text" name="autor" required value="<?php echo $doc[0]->getUsername() ?>">
+            <input type="text" name="autor" required value="<?php echo $doc[0]->getUsername() ?>"><br>
 
             <label for="categoria">Categoria: </label>
             <select for="categoria" name="categoria">            
@@ -29,15 +40,15 @@ $doc = $dManager->getDocById($id);
                 <option value="musica">Musica</option>
                 <option value="politica">Politica</option>
                 <option value="filmes">Filmes</option>
-            </select>
+            </select><br>
 
             <label for="palavras">Palavras Chave:</label>
-            <input type="text" name="palavras" required value="<?php echo $doc[0]->getPalavrasChave() ?>">
-
+            <input type="text" name="palavras" required value="<?php echo $doc[0]->getPalavrasChave() ?>"><br><br>
+            <label>Estado do Documento</label>
             <br><input type="radio" name="tipo" checked="true" value="1"> Privado<br>
             <input type="radio" name="tipo" value="2"> Publico<br>
             <input type="radio" name="tipo" value="3"> Partilhado
-
+            <br>
             <table   id="partilhar">
                 <tr>
                     <th>Nome do Utilizador</th>
@@ -63,6 +74,5 @@ $doc = $dManager->getDocById($id);
             <input type="text" name="cod" value="<?php echo $doc[0]->getId() ?>" hidden="true" id="cod" >
             <input name="editar" type="submit" id="editar">
         </form>
-        <a href="MeusDoc.php"><button type="button">Voltar</button></a>
     </body>
 </html>
