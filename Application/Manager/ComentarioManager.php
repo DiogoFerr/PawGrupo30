@@ -19,6 +19,17 @@ class ComentarioManager extends MyDataAccessPDO {
         }
     }
 
+    public function ComentarioPorId($id) {
+        try {
+            return $this->getRecords(self::SQL_TABLE_NAME, Array('id' => $id));
+
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
+
+   
+
     public function todosOsComentariosPorId($idDoc) {
         try {
             $lista = $this->getRecords(self::SQL_TABLE_NAME, Array('idDoc' => $idDoc));

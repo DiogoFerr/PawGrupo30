@@ -20,7 +20,7 @@ if (!isset($_SESSION['username'])) {
     $doc = $dManager->getDocById($idDoc);
     ?>
     <h2>Titulo: <?php echo $doc[0]->getTitulo() ?></h2>
-    <h2>Autor: <?php echo $doc[0]->getAutor() ?></h2>
+    <h2>Autor: <?php echo $doc[0]->getUsername() ?></h2>
     <h2>Resumo: <?php echo $doc[0]->getResumo() ?></h2>
     <h2>Categoria: <?php echo $doc[0]->getCategoria() ?></h2>
     <h2>Data de criação: <?php echo $doc[0]->getDataCriacao() ?></h2>
@@ -37,6 +37,9 @@ if (!isset($_SESSION['username'])) {
             <tr>
                 <td><?php echo $value->getUtilizador() ?> : </td>
                 <td><?php echo $value->getComentario() ?></td>
+                <?php if ($value->getUtilizador() == $_SESSION['username']) { ?>
+                <td><a href="apagarComentario.php?id=<?php echo $value->getId()?>">Apagar</a></td>
+                <?php } ?>
             </tr>
             <?php
         }

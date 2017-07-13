@@ -6,7 +6,7 @@ class Documento {
     private $titulo;
     private $nome;
     private $tipo;
-    private $autor;
+    private $username;
     private $resumo;
     private $categoria;
     private $dataCriacao;
@@ -14,14 +14,14 @@ class Documento {
     private $palavrasChave;
     private $tamanho;
     private $estado;
-    private $username;
+    
 
-    function __construct($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado, $username) {
+    function __construct($id, $nome, $tipo, $titulo, $username, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado) {
         $this->id = $id;
         $this->nome = $nome;
         $this->tipo = $tipo;
         $this->titulo = $titulo;
-        $this->autor = $autor;
+        $this->username = $username;
         $this->resumo = $resumo;
         $this->categoria = $categoria;
         $this->dataCriacao = $dataCriacao;
@@ -29,7 +29,7 @@ class Documento {
         $this->palavrasChave = $palavrasChave;
         $this->tamanho = $tamanho;
         $this->estado = $estado;
-        $this->username = $username;
+        
     }
 
     function getUsername() {
@@ -54,10 +54,6 @@ class Documento {
 
     function getTipo() {
         return $this->tipo;
-    }
-
-    function getAutor() {
-        return $this->autor;
     }
 
     function getResumo() {
@@ -100,10 +96,6 @@ class Documento {
         $this->tipo = $tipo;
     }
 
-    function setAutor($autor) {
-        $this->autor = $autor;
-    }
-
     function setResumo($resumo) {
         $this->resumo = $resumo;
     }
@@ -141,7 +133,7 @@ class Documento {
             'nomeFicheiro' => $this->getNome(),
             'tipo' => $this->getTipo(),
             'titulo' => $this->getTitulo(),
-            'autor' => $this->getAutor(),
+            'username' => $this->getUsername(),
             'resumo' => $this->getResumo(),
             'categoria' => $this->getCategoria(),
             'dataCriacao' => $this->getDataCriacao(),
@@ -149,7 +141,7 @@ class Documento {
             'palavrasChave' => $this->getPalavrasChave(),
             'tamanho' => $this->getTamanho(),
             'estado' => $this->getEstado(),
-            'username' => $this->getUsername()
+            
         );
 
         return $data;
@@ -161,19 +153,19 @@ class Documento {
                         $data['nomeFicheiro'], 
                         $data['tipo'], 
                         $data['titulo'], 
-                        $data['autor'], 
+                        $data['username'], 
                         $data['resumo'], 
                         $data['categoria'], 
                         $data['dataCriacao'], 
                         $data['conteudo'], 
                         $data['palavrasChave'], 
                         $data['tamanho'], 
-                        $data['estado'],
-                        $data['username']);
+                        $data['estado']
+                        );
     }
 
-    public static function createObject($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado,$username) {
-        $documento = new Documento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado,$username);
+    public static function createObject($id, $nome, $tipo, $titulo, $username, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado) {
+        $documento = new Documento($id, $nome, $tipo, $titulo, $username, $resumo, $categoria, $dataCriacao, $conteudo, $palavrasChave, $tamanho, $estado);
 
         return $documento;
     }

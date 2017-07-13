@@ -60,8 +60,8 @@ class Comentario {
     }
 
     public static function createObject($id, $idDoc, $username, $comentario) {
-        $comentario = new Comentario($id, $idDoc, $username, $comentario);
-        return $comentario;
+        $coment = new Comentario($id, $idDoc, $username, $comentario);
+        return $coment;
     }
 
 }

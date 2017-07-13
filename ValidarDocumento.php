@@ -80,7 +80,7 @@ if (filter_has_var($inputType, 'upload')) {
     } else {
         $documentomanager = new DocumentoManager();
         if (move_uploaded_file($tmpName, $folder . $fileName)) {
-            $documentomanager->registarDocumento(null, $fileName, $fileType, $fileName, $username, $resumo, $categoria, $filedate, $content, $palavras, $fileSize, $estado = 1, $username);
+            $documentomanager->registarDocumento(null, $fileName, $fileType, $fileName, $username, $resumo, $categoria, $filedate, $content, $palavras, $fileSize, $estado = 1);
             echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
         }
     }

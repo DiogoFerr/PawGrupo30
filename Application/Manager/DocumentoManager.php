@@ -8,9 +8,9 @@ class DocumentoManager extends MyDataAccessPDO {
 
     const SQL_TABLE_NAME = 'documento';
 
-    public function registarDocumento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username) {
+    public function registarDocumento($id, $nome, $tipo, $titulo, $username, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado ) {
 
-        $documento = new Documento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username);
+        $documento = new Documento($id, $nome, $tipo, $titulo, $username, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado);
 
         try {
             $this->insert(static::SQL_TABLE_NAME, $documento->convertObjectToArray());
@@ -88,9 +88,9 @@ class DocumentoManager extends MyDataAccessPDO {
         }
     }
 
-    public function updateDocumento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username) {
+    public function updateDocumento($id, $nome, $tipo, $titulo, $username, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado) {
 
-        $documento = new Documento($id, $nome, $tipo, $titulo, $autor, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado, $username);
+        $documento = new Documento($id, $nome, $tipo, $titulo, $username, $resumo, $categoria, $data, $conteudo, $palavras, $tamanho, $estado);
 
         try {
             $this->update(static::SQL_TABLE_NAME, $documento->convertObjectToArray(), Array('id' => $id));
@@ -107,7 +107,7 @@ class DocumentoManager extends MyDataAccessPDO {
             <fieldset>
                 <h2>Titulo: <?php echo $value->getTitulo() ?> </h2>
                 <p>Resumo: <?php echo $value->getResumo() ?></p>
-                <p>Autor: <?php echo $value->getAutor() ?></p>
+                <p>Autor: <?php echo $value->getUsername() ?></p>
                 <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>
             </fieldset>
             <?php
@@ -123,7 +123,7 @@ class DocumentoManager extends MyDataAccessPDO {
                 <fieldset>
                     <h2>Titulo: <?php echo $value->getTitulo() ?> </h2>
                     <p>Resumo: <?php echo $value->getResumo() ?></p>
-                    <p>Autor: <?php echo $value->getAutor() ?></p>
+                    <p>Autor: <?php echo $value->getUsername() ?></p>
                     <a href="detalhesDocumento.php?id=<?php echo $value->getId() ?>">Mais...</a>
                 </fieldset>
                 <?php

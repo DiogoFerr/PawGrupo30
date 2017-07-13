@@ -73,6 +73,7 @@ require_once Config::getApplicationManagerPath() . 'DocUtilManager.php';
                         <a href="logout.php"><button type="button">Logout</button></a>
                         <a href="CriarDocumento.php"><button type="button">Doc Upload</button></a>
                         <a href="MeusDoc.php"><button type="button">Meus Documentos</button></a>
+                        <a href="MeuPerfil.php"><button type="button">Meu Perfil</button></a>
                         <form method="get" action="pesquisa.php">
                             <input type="text" name="pesquisa">
                             <select name="campo" required>
