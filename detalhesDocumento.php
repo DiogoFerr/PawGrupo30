@@ -13,7 +13,7 @@ $dManager = new DocumentoManager();
 
 $doc = $dManager->getDocById($idDoc);
 
-if ($doc[0]->getEstado() == 1) {
+if (!isset($_SESSION['username']) && $doc[0]->getEstado() == 1) {
     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
 } else {
     ?>
