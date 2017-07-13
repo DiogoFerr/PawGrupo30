@@ -4,7 +4,7 @@ require_once __DIR__ . './AtualizarPerfil.php';
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Alterar Nome</title>
+        <title>Alterar Password</title>
     </head>
     <body>
         <h2>Meu Perfil</h2>
@@ -15,15 +15,19 @@ require_once __DIR__ . './AtualizarPerfil.php';
             <li>  <a href="alterarPass.php">AlterarPassword</a></li>
             <li>  <a href="MeuPerfil.php">Voltar</a></li>
         </ul>
-        <form method="post" action="">
-            <label for="novoNome">Novo Nome:</label>
+        <form method="post" action="AtualizarPerfil.php">
 
-            <input type="text" name="novoNome">
+            <label for="novaPass">Nova Pass:</label>
 
-            <input type="submit" name="nome" value="Alterar Nome">
+            <input type="password" name="novaPass">
+            
+            <label for="cnovaPass">Confirmar Nova Pass:</label>
 
-            <?php if (isset($errors['nome'])) { ?>
-                <p><?php echo $errors['nome'] ?></p>
+            <input type="password" name="cnovaPass">
+            
+            <input type="submit" name="pass" value="Alterar Pass">
+            <?php if (isset($errors['pass'])) { ?>
+                <p><?php echo $errors['pass'] ?></p>
             <?php } ?>
         </form>
     </body>

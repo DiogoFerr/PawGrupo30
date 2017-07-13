@@ -44,6 +44,6 @@ require_once __DIR__ . './ValRegistar.php';
             <button type="submit" name="registar" id="registar" value="registar">Registar</button>
 
         </form>
-
+        <a href="index.php"><button type="button">Voltar</button></a>
     </body>
 </html>

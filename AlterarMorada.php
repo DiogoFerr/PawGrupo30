@@ -1,10 +1,10 @@
 <?php
-require_once __DIR__ . './AtualizarPerfil.php';
+require_once __DIR__. './AtualizarPerfil.php';
 ?>
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>Alterar Nome</title>
+        <title>Alterar Morada</title>
     </head>
     <body>
         <h2>Meu Perfil</h2>
@@ -15,16 +15,16 @@ require_once __DIR__ . './AtualizarPerfil.php';
             <li>  <a href="alterarPass.php">AlterarPassword</a></li>
             <li>  <a href="MeuPerfil.php">Voltar</a></li>
         </ul>
-        <form method="post" action="">
-            <label for="novoNome">Novo Nome:</label>
-
-            <input type="text" name="novoNome">
-
-            <input type="submit" name="nome" value="Alterar Nome">
-
-            <?php if (isset($errors['nome'])) { ?>
-                <p><?php echo $errors['nome'] ?></p>
-            <?php } ?>
+        <form method="post" >
+            
+            <label for="novaMorada">Nova Morada:</label>
+            
+            <input type="text" name="novaMorada">
+            
+            <input type="submit" name="morada" value="Alterar Morada">
+            <?php if (isset($errors['morada'])) { ?>
+                <p><?php echo $errors['morada'] ?></p>
+                <?php } ?>
         </form>
     </body>
 </html>
