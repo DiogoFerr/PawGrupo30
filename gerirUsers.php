@@ -1,4 +1,5 @@
-<a href="index.php"><button type="button">Voltar</button></a>
+<link rel="stylesheet" href="Application/Utilis/css/newcss.css"/>
+<img src="Application/Utilis/images/top.jpg" alt="topkek" id="imagemtop">
 <?php
 require_once __DIR__ . '/Config.php';
 
@@ -7,6 +8,14 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
 $userManager = new userManager();
 $users = $userManager->getUsers();
 ?>
+<nav>
+    <h2>Bem-vindo Administrador</h2>
+    <ul>
+        <li><a href="gerirUsers.php">Aprovar Contas</a></li>
+        <li><a href="ApagarUtilizador.php">Apagar Utilizador</a></li>
+        <li><a href="logout.php">Logout</a></li>
+    </ul>
+</nav>
 <h1>Lista de users: </h1>
 <hr>
 <h2>Registados</h2>

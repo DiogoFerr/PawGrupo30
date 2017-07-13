@@ -63,12 +63,14 @@ require_once Config::getApplicationManagerPath() . 'DocUtilManager.php';
             if (($_SESSION['estadoServer']) === 'admin') {
                 ?>
                 <div>
-                    <h2>Bem-vindo Administrador</h2>
-                     <ul>
-                         <li><a href="gerirUsers.php">Aprovar Contas</a></li>
-                         <li><a href="ApagarUtilizador.php">Apagar Utilizador</a></li>
-                        <li><a href="logout.php">Logout</a></li>
-                    </ul>
+                    <nav>
+                        <h2>Bem-vindo Administrador</h2>
+                        <ul>
+                            <li><a href="gerirUsers.php">Aprovar Contas</a></li>
+                            <li><a href="ApagarUtilizador.php">Apagar Utilizador</a></li>
+                            <li><a href="logout.php">Logout</a></li>
+                        </ul>
+                    </nav>
                 </div>
                 <?php
             }

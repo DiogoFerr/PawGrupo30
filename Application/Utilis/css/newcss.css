@@ -13,7 +13,7 @@ nav{
     width: 15%;
     background-color: gray;
     display: inline;
-    height: 765px;
+    height: 1200px;
 }
 
 fieldset{
@@ -28,7 +28,7 @@ fieldset{
     width: 15%;
     background-color: gray;
     display: inline;
-    height: 974px
+    height: 1200px
 }
 
 ul{
@@ -51,5 +51,9 @@ td{
 }
 
 #comment{
+    color: white;
+}
+
+#none{
     color: white;
 }
