@@ -15,10 +15,11 @@ require_once __DIR__ . './ValidarDocumento.php';
         <nav>
             <h2>Username: <span><?php echo $_SESSION['username'] ?></span></h2>
             <ul>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="CriarDocumento.php">Doc Upload</li>
                 <li><a href="MeusDoc.php">Meus Documentos</a></li>
                 <li><a href="MeuPerfil.php">Meu Perfil</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
         <form method="post" enctype="multipart/form-data">
@@ -29,6 +30,7 @@ require_once __DIR__ . './ValidarDocumento.php';
                 <option value="politica">Politica</option>
                 <option value="filmes">Filmes</option>
             </select>
+            <br>
             <label for="palavras">Palavras Chave:</label>
             <input type="text" name="palavras" id="palavras" required="true">
             <p><?php

@@ -13,10 +13,11 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
         <nav>
             <h2>Username: <span><?php echo $_SESSION['username'] ?></span></h2>
             <ul>
-                <li><a href="logout.php">Logout</a></li>
+                <li><a href="index.php">Home</a></li>
                 <li><a href="CriarDocumento.php">Doc Upload</li>
                 <li><a href="MeusDoc.php">Meus Documentos</a></li>
                 <li><a href="MeuPerfil.php">Meu Perfil</a></li>
+                <li><a href="logout.php">Logout</a></li>
             </ul>
         </nav>
         <h1>Meus Documentos </h1>

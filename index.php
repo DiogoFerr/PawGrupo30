@@ -97,10 +97,10 @@ require_once Config::getApplicationManagerPath() . 'DocUtilManager.php';
                         <input type="submit"name="pesquisar" value="pesquisar">
                     </form>
                     <ul>
-                        <li><a href="logout.php">Logout</a></li>
                         <li><a href="CriarDocumento.php">Doc Upload</li>
                         <li><a href="MeusDoc.php">Meus Documentos</a></li>
                         <li><a href="MeuPerfil.php">Meu Perfil</a></li>
+                        <li><a href="logout.php">Logout</a></li>
                     </ul>
                 </div>
                 <?php

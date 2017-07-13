@@ -29,11 +29,8 @@ require_once Config::getApplicationManagerPath() . 'userManager.php';
 
         $user = $uManager->getUserByName($_SESSION['username']);
         ?>
-        <label>Nome:</label>
-        <label><?php echo $user[0]['nome'] ?></label>
-        <label>Morada:</label>
-        <label><?php echo $user[0]['morada'] ?></label>
-        <label>Contacto:</label>
-        <label><?php echo $user[0]['contacto'] ?></label>
+        <h1>Nome: <?php echo $user[0]['nome'] ?></h1>
+        <h1>Morada: <?php echo $user[0]['morada'] ?></h1>
+        <h1>Contacto: <?php echo $user[0]['contacto'] ?></h1>
     </div>
 </html>
