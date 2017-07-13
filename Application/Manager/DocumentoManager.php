@@ -80,6 +80,13 @@ class DocumentoManager extends MyDataAccessPDO {
         }
     }
 
+     public function delete_doc_user($username) {
+        try {
+            return $this->delete(self::SQL_TABLE_NAME, Array('username' => $username));
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
     public function delete_doc($id) {
         try {
             return $this->delete(self::SQL_TABLE_NAME, Array('id' => $id));

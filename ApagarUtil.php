@@ -1,4 +1,5 @@
 <?php
+
 require_once __DIR__ . '/Config.php';
 
 require_once Config::getApplicationManagerPath() . 'userManager.php';
@@ -23,13 +24,9 @@ $uManager->delete_user($username);
 
 $cManager->apagarComentarioUser($username);
 
-$lista = $dManager->getMyDocuments($username);
+$dcManager->delete_doc_user($username);
 
-foreach ($lista as $value){
-    $dManager->delete_doc($value->getId());
-    $dcManager->delete_doc($value->getId());
-    
-}
+$dManager->delete_doc($username);
 
-  echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
+echo '<META HTTP-EQUIV="Refresh" Content="0; URL=http://localhost:1234/PawGrupo30/index.php">';
 
