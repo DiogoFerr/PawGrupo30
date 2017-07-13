@@ -13,15 +13,24 @@
  */
 class DocUtil {
 
+    private $id;
     private $codDoc;
     private $username;
 
-    function __construct($codDoc, $username) {
+    function __construct($id, $codDoc, $username) {
+        $this->id = $id;
         $this->codDoc = $codDoc;
         $this->username = $username;
     }
+    function getId() {
+        return $this->id;
+    }
 
-    function getCodDoc() {
+    function setId($id) {
+        $this->id = $id;
+    }
+
+        function getCodDoc() {
         return $this->codDoc;
     }
 
@@ -38,18 +47,22 @@ class DocUtil {
     }
 
     public function convertObjectToArray() {
-        $data = array('codDoc' => $this->getCodDoc(),
+        $data = array(
+            'id'=>$this ->getId(),
+            'codDoc' => $this->getCodDoc(),
             'username' => $this->getUsername());
         return $data;
     }
 
     public static function convertArrayToObject(Array &$data) {
         return self::createObject(
-                        $data['codDoc'], $data['username']);
+                        $data['id'],
+                        $data['codDoc'], 
+                        $data['username']);
     }
 
-    public static function createObject($codDoc, $username) {
-        $docUtil = new DocUtil($codDoc, $username);
+    public static function createObject($id,$codDoc, $username) {
+        $docUtil = new DocUtil($id,$codDoc, $username);
         return $docUtil;
     }
 

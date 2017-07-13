@@ -65,7 +65,7 @@ if (filter_has_var($inputType, 'cod')) {
             $lista = $manager->getUsers();
             foreach ($lista as $value) {
                 if (filter_has_var($inputType, 'username' . $value['id'])) {
-                    $docUtilManager->registarDocumentoPartilhado($doc[0]->getId(), $value['username']);
+                    $docUtilManager->registarDocumentoPartilhado(null,$doc[0]->getId(), $value['username']);
                 }
             }
         }

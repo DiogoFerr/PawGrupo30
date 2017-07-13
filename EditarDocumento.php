@@ -7,6 +7,8 @@ require_once Config::getApplicationManagerPath() . 'DocumentoManager.php';
 
 require_once Config::getApplicationManagerPath() . 'userManager.php';
 
+require_once Config::getApplicationManagerPath() . 'DocUtilManager.php';
+
 $id = filter_input(INPUT_GET, 'id');
 $dManager = new DocumentoManager();
 $doc = $dManager->getDocById($id);
@@ -59,15 +61,18 @@ $doc = $dManager->getDocById($id);
                 <?php
                 $manager = new userManager();
                 $lista = $manager->getUsers();
+                $dcManager = new DocUtilManager();
                 foreach ($lista as $value) {
                     if (!($_SESSION['username'] == $value['username'])) {
                         if ($value['estadoServer'] == 'aprovado') {
-                            ?>
-                            <tr>
-                                <td><?php echo $value['username'] ?> </td>
-                                <td><input value="<?php echo $value['id'] ?>" name="username<?php echo $value['id'] ?>" type="checkbox"></td>
-                            </tr>
-                            <?php
+                            if (!($dcManager->getExiste($doc[0]->getId(), $value['username']))) {
+                                ?>
+                                <tr>
+                                    <td><?php echo $value['username'] ?> </td>
+                                    <td><input value="<?php echo $value['id'] ?>" name="username<?php echo $value['id'] ?>" type="checkbox"></td>
+                                </tr>
+                                <?php
+                            }
                         }
                     }
                 }

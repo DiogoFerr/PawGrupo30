@@ -13,9 +13,9 @@ class DocUtilManager extends MyDataAccessPDO {
 
     const SQL_TABLE_NAME = 'docutil';
 
-    public function registarDocumentoPartilhado($codDoc, $username) {
+    public function registarDocumentoPartilhado($id, $codDoc, $username) {
 
-        $docUtil = new DocUtil($codDoc, $username);
+        $docUtil = new DocUtil($id, $codDoc, $username);
 
         try {
             $this->insert(static::SQL_TABLE_NAME, $docUtil->convertObjectToArray());
@@ -40,6 +40,18 @@ class DocUtilManager extends MyDataAccessPDO {
         }
     }
 
+    public function getExiste($codDoc, $username) {
+        try {
+            $lista = $this->getRecords(self::SQL_TABLE_NAME, Array('codDoc'=>$codDoc,'username' => $username));
+            if(empty($lista)){
+                return false;
+            }else{
+                return true;
+            }
+        } catch (Exception $e) {
+            throw $e;
+        }
+    }
     public function getDocByUsername($username) {
         try {
             $lista = $this->getRecords(self::SQL_TABLE_NAME, Array('username' => $username));
