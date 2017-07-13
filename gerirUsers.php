@@ -1,9 +1,8 @@
-<a href="areaAdmin.php"><button type="button">Voltar</button></a>
+<a href="index.php"><button type="button">Voltar</button></a>
 <?php
-
 require_once __DIR__ . '/Config.php';
 
-require_once Config::getApplicationManagerPath(). 'userManager.php';
+require_once Config::getApplicationManagerPath() . 'userManager.php';
 
 $userManager = new userManager();
 $users = $userManager->getUsers();

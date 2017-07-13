@@ -64,8 +64,11 @@ require_once Config::getApplicationManagerPath() . 'DocUtilManager.php';
                 ?>
                 <div>
                     <h2>Bem-vindo Administrador</h2>
-                    <a href="areaAdmin.php"><button type="button">AreaAdmin</button></a>
-                    <a href="logout.php"><button type="button">Loggout</button></a>
+                     <ul>
+                         <li><a href="gerirUsers.php">Aprovar Contas</a></li>
+                         <li><a href="ApagarUtilizador.php">Apagar Utilizador</a></li>
+                        <li><a href="logout.php">Logout</a></li>
+                    </ul>
                 </div>
                 <?php
             }
