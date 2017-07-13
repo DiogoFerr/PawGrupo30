@@ -7,8 +7,7 @@ require_once __DIR__ . './ValidarDocumento.php';
     <head>
         <meta charset="UTF-8">
         <title>Criar Documento</title>
-        <script src="<?= Config::getApplicationJSPath() . 'jquery-2.2.4.min.js' ?> "></script>
-        <script src="<?= Config::getApplicationJSPath() . 'CriarDocumento.js' ?>" ></script>
+        
     </head>
     <img src="Application/Utilis/images/top.jpg" alt="topkek" id="imagemtop">
     <body>
